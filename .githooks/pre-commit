@@ -1,0 +1,15 @@
+#!/bin/sh
+# Blocks creating a commit with a non-no-reply identity. `git var` resolves the
+# identity git will actually use, including `-c user.email=...` overrides and
+# GIT_AUTHOR_EMAIL / GIT_COMMITTER_EMAIL environment variables.
+. "$(dirname "$0")/check-email.sh"
+
+for role in AUTHOR COMMITTER; do
+  email=$(git var "GIT_${role}_IDENT" | sed -n 's/.*<\(.*\)>.*/\1/p')
+  if ! is_allowed "$email"; then
+    echo "pre-commit: refusing to commit with $role email <$email>" >&2
+    echo "  Use your GitHub no-reply address:" >&2
+    echo "  git config user.email 117511561+elddad@users.noreply.github.com" >&2
+    exit 1
+  fi
+done

@@ -19,6 +19,8 @@ vertical position.
 To update: replace the folder's contents with the new release and press the
 reload arrow on the extension's card in `chrome://extensions`.
 
+Settings apply live while a video plays — no page reload needed.
+
 ## Build
 
 ```powershell
@@ -27,8 +29,6 @@ pwsh -File build.ps1
 
 Produces `dist/` (loose files) and `build/subtitle-restyler-<version>.zip`
 (Chrome Web Store upload / release asset) from the same source.
-
-Changes apply live — no reload of the video page.
 
 ## How it works
 
@@ -101,3 +101,16 @@ the class looks hashed; they survive rotation better.
 - A keyboard shortcut to nudge vertical position mid-scene (`commands` API)
 - Dual subtitles — this needs a full re-render: hide the native cues, read their
   text, and draw your own overlay inside the fullscreen element
+
+## Contributing
+
+Commits must use a GitHub no-reply email so personal addresses never end up in
+public history. Enable the guard hooks once after cloning:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+`pre-commit` refuses a commit whose author or committer email isn't
+`*@users.noreply.github.com`; `pre-push` re-checks every outgoing commit, which
+also catches commits made with `--no-verify`.

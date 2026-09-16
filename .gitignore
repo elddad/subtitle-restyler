@@ -1,0 +1,4 @@
+# Build outputs: regenerate with build.ps1. The zip is attached to GitHub
+# Releases instead of being committed.
+build/
+dist/

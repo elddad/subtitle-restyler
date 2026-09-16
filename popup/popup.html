@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Subtitle Restyler</h1>
+      <label class="toggle">
+        <input type="checkbox" id="enabled" />
+        <span>On</span>
+      </label>
+    </header>
+
+    <div id="preview"><span id="preview-text">The quick brown fox</span></div>
+
+    <div class="grid">
+      <label>Font
+        <select id="fontFamily">
+          <option value='system-ui, "Segoe UI", Arial, sans-serif'>System</option>
+          <option value="Arial, Helvetica, sans-serif">Arial</option>
+          <option value='"Trebuchet MS", sans-serif'>Trebuchet</option>
+          <option value='Georgia, "Times New Roman", serif'>Georgia</option>
+          <option value='"Comic Sans MS", cursive'>Comic Sans</option>
+          <option value='ui-monospace, "Cascadia Mono", monospace'>Monospace</option>
+        </select>
+      </label>
+
+      <label>Weight
+        <select id="fontWeight">
+          <option value="400">Regular</option>
+          <option value="600">Semibold</option>
+          <option value="700">Bold</option>
+          <option value="900">Black</option>
+        </select>
+      </label>
+
+      <label>Size <output id="fontSizePct-out"></output>
+        <input type="range" id="fontSizePct" min="2" max="12" step="0.1" />
+      </label>
+
+      <label>Line height <output id="lineHeight-out"></output>
+        <input type="range" id="lineHeight" min="1" max="2" step="0.05" />
+      </label>
+
+      <label>Letter spacing <output id="letterSpacing-out"></output>
+        <input type="range" id="letterSpacing" min="-0.05" max="0.3" step="0.01" />
+      </label>
+
+      <label>Max width <output id="maxWidthPct-out"></output>
+        <input type="range" id="maxWidthPct" min="30" max="100" step="1" />
+      </label>
+
+      <label>Raise from bottom <output id="bottomOffsetPct-out"></output>
+        <input type="range" id="bottomOffsetPct" min="0" max="40" step="0.5" />
+      </label>
+
+      <label>Outline <output id="outlineWidthPct-out"></output>
+        <input type="range" id="outlineWidthPct" min="0" max="1" step="0.05" />
+      </label>
+
+      <label>Box opacity <output id="boxOpacity-out"></output>
+        <input type="range" id="boxOpacity" min="0" max="1" step="0.05" />
+      </label>
+
+      <div class="colors">
+        <label>Text <input type="color" id="color" /></label>
+        <label>Outline <input type="color" id="outlineColor" /></label>
+        <label>Box <input type="color" id="boxColor" /></label>
+      </div>
+    </div>
+
+    <footer>
+      <button id="reset">Reset to defaults</button>
+    </footer>
+
+    <script src="../src/defaults.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
